@@ -1,0 +1,98 @@
+a. The biggest notable obstacle was trying to figure out all the errors
+that needed to be returned in each function. To specify, I had a hard time 
+figuring out the errors that needed to be returned in the lookupAny function.
+Another challenge I faced was writing the subsequence function. It was a change
+of pace having to evaluate an array elements to another array. Unlike the other
+functions, this one required my code to find a sequence of elements in a1 
+that match sequentially to those in a2. At first, I tried to incorporate 3
+nested loops, but after an hour of debugging, I found that this can be accomplished with 
+only 2 loops.
+
+b. 
+string h[4] = { "rea", "poi", "les", "sea" };
+appendToAll(h, 4, "son"); //handled
+- To check if function adds a string to the end of array elements
+appendToAll(h, -1, "son"); //handled
+- To check if a negative n value returns -1
+
+string people[5] = { "bob", "rudy", "fiona", "rudy", "mick" };
+lookup(people, 5, "bob"); //handled
+- To check if function returns 0 because Bob is the first element of the array
+lookup(people, 5, "rudy"); //handled
+- To check if function returns smallest position number when there is multiple matching strings
+lookup(people, 5, "jack"); //handled
+- To check if function returns -1 since there are no matching strings
+lookup(people, -3, "bob"); //handled
+- To check if a negative n value returns -1
+
+string jobs[4] = { "engineer", "scientist", "nurse", "scientist" };
+positionOfMax(jobs, 4); //handled
+- To check if function returns the earliest position of the greatest string
+positionOfMax(jobs, -2); //handled
+- To check if a negative n value returns -1
+positionOfMax(jobs, 0); //handled
+- To check if a n value of 0 returns -1
+
+string jobs[4] = { "engineer", "scientist", "nurse", "doctor" };
+rotateLeft(jobs, 4, 1); //handled
+- To check if function rotates everything right of scientist to the left and returns pos
+rotateLeft(jobs, 4, 5); //handled
+- To check if a pos value greater than or equal to n returns -1
+rotateLeft(jobs, 4, -1); //handled
+- To check if a pos value less than 0 returns -1
+rotateLeft(jobs, -1, 0); //handled
+- To check if a negative n value returns -1
+
+string d[8] = { "rudy", "adam", "mike", "mike", "fiona", "fiona", "fiona", "mike" }; 
+countRuns(d, 8); //handled
+- To check if function returns number of sequences, 5
+countRuns(d, -1); //handled
+- To check if a negative n value returns -1
+
+string names[6] = { "travis", "john", "nathan", "jack", "matt", "isabella" };
+flip(names, 6); //handled
+- To check if function is properly flipped and n is returned
+flip(names, 4); //handled
+- To check if a portion of the array can be flipped
+flip(names, -1); //handled
+- To check if a negative n value returns -1
+
+string jobs1[4] = { "engineer", "scientist", "nurse", "scientist" };
+string jobs2[4] = { "engineer", "scientist", "nurse", "doctor" };
+differ(jobs1, 4, jobs2, 4); //handled
+- To check if function returns position where elements in jobs1 and jobs2 differ
+differ(jobs1, 2, jobs2, 2); //handled
+- To check if when both arrays are completely equal returns the proper value
+differ(jobs, -1, jobs2, -3); //handled
+- To check if a negative n1 or n2 value returns -1
+
+string jobs1[4] = { "engineer", "scientist", "nurse", "scientist" };
+string jobs2[4] = { "engineer", "scientist", "nurse", "doctor" };
+subsequence(jobs1, 4, jobs2, 3); //handled
+- To check if the function returns the correct value when a sequence matches
+subsequence(jobs1, 4, jobs2, 4); //handled
+- To check if the function returns -1 when a1 does not contain a2 as a contiguous subsequence
+subsequence(jobs1, 4, jobs2, 0); //handled
+- To check if a subsequence of 0 elements returns position 0
+subsequence(jobs1, -1, jobs2, -3); //handled
+- To check if a negative n1 or n2 value returns -1
+
+string peeps1[10] = { "gordon", "marie", "nancy", "mick", "adam", "lindsey" };
+string peeps2[10] = { "marie", "nancy", "mick" };
+lookupAny(peeps1, 6, peeps2, 3); //handled
+- To check if the function returns correct a1 position where the element matches a2
+lookupAny(peeps1, 1, peeps2, 1); //handled
+- To check if the function returns -1 when no elements match
+lookupAny(peeps1, -3, peeps2, -3); //handled
+- To check if a negative n1 or n2 values returns -1
+
+string names2[6] = { "travis", "matt", "nathan", "jack", "matt", "john"};
+separate(names2, 6, "nate"); //handled
+- To check if the function properly seperates elements and returns position of first element > separator
+separate(names2, 6, "matt"); //handled
+- To check results when an element is equal to the separator
+separate(names2, 6, "zack"); //handled
+- To check if function returns n when no elements are > than separator
+separate(names2, -5, "joe"); //handled
+- To check if a negative n value returns -1
+

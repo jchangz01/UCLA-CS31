@@ -1,0 +1,66 @@
+a. A challenge I faced during the creation of my program was figuring out 
+how to analyze a string of commands. At first, I tried to split up the command
+string into sections of commands, but this task presented many more 
+challenges than expected. After hours of deep thinking, I decided to begin
+by evaluating the initial letters of each command (h, v, f, b, c) and then
+check the possible characters that follow. If a full command is created, my program
+would then add a value (depending on command) to the evaluated variable in the "for 
+loop" to skip iterations.
+
+b. My program utilizes the main given in the project 3 specs, performingCommands, and 
+plotLine functions. To begin, my plotLine function has 6 parameters to
+determine the settings of the line being plotted. The function starts with the
+farthest outer loop checking the direction in whicht he line will be placed ("//checks
+direction horizontal" or "//checks direction vertical"). Moving into the loop, the following
+statements check whether the line will move in the positive or negative direction 
+("//line will be drawn left to right" vice versa or "//line will be drawn bottom to top" vice versa) and
+whether the line will be plotted in the foreground or background ("//character will 
+replace any character in place" or "//character will only replace ' '). The psuedo code
+that states "//Checks to make sure the horizontal/vertical line drawn is within 
+bound" precedes the  if statement that evaluates the bounds by adding the length of the line to 
+the current row or columns and then checking whether they are between 1-20 
+for rows or 1-30 for columns. If these conditions are passed the function will execute 
+and return true, otherwise no actions will be taken and false will be returned.
+On the other hand, the performingCommand function takes 4 arguments, a command, character, 
+mode, and position for error. The command string is read and executed based on a sequence of 
+commands. If all commands execute with no error, the function will return an int 0, 
+otherwise the function may return a 1 or 2. Each command is read individually by identifying
+ the first key character (v, h, f, b, c). We use this as an identifier for the characters 
+that follows. For instance, if 'v' or 'V' is entered ("//evaluates for the vertical command"), 
+we know that the characters to precede should be  a positive or negative number being one or two digits.
+If this is not the case, we will return an integer 1 with the position where the error was
+created indicating a syntax error. However, if the line were to create a solid command, 
+we will repeat the process until the whole command string is read. If at any time a
+command would plot a line out of the grid, our function will return 2 and indicate a 
+command error ("//if plotLine does not return true, command error is made" & "//return 2 if a 
+command error is made").
+
+c. 
+performingCommands ("v3h3", '*', FG, position) //handled
+- Test to see if vertical and horizontal line plotting is functional
+performingCommands ("v3Fxh3", '*', FG, position) //handled
+- Test for functionality of foreground command 
+performingCommands ("h10Bdh-5fxH10", '*', FG, position) //handled
+- Test for functionality of foreground and background
+- Test for accurate plotting positioning 
+performingCommands ("f-h10f|v10f-h-10f|v-10", '*', FG, position) //handled
+- Test for see if negative values of vertical and horizontal line plotting is functional
+performingCommands ("f6h10v5h2F9v-3h8b6v12c", '*', FG, position) //handled
+- Test for functionality of clear command
+performingCommands ("v10h20v15", '*', FG, position) //handled
+- Test for vertical command error at position 8
+performingCommands ("h10v19h5v-8h20", '*', FG, position) //handled
+- Test for horizontal command error at position 13
+performingCommands ("h19d", '*', FG, position) //handled
+- Test for syntax error at position 4
+performingCommands ("c10", '*', FG, position) //handled
+- Test for syntax error at position 2
+performingCommands ("h10v5h21fWx", '*', FG, position) //handled
+- Test to check if a syntax error outputs over a command error
+performingCommands ("", '*', FG, position) //handled
+- Test to check if main function exits when nothing is entered into cmd
+
+
+
+
+

@@ -1,0 +1,25 @@
+a. The biggest obstacle when creating this project was learning how
+intake information from the project specs and processing that info into 
+code. For the most part, the instructions and requirements were very
+clear; however, I didn't really understand some parts of the project specs.
+To specify, I was confused by the line that stated "that one line you write 
+must be in one of the following four forms; the text must be identical 
+to what is shown, except that italicized items are replaced as 
+appropriate:" and the examples that followed. To clarify on what needed to 
+be added to my code, I asked my TA during my discussion.
+
+b. 
+Paid amount under 40 thousand dollars (Henry, 35, n) 
+Paid amount under 250 and over 40 (Jack, 189, y) 
+Paid amount over 250 thousand dollars (Nathan, 311, y)
+Paid amount a decimal #1(Kat, 2.1, n)
+Paid amount a decimal #2 (Isabella, 100.2, y) 
+Paid amount a decimal #3 (Melissa, 292.3, y)
+Amount paid is zero (Justin, 0, y)
+Amount paid is a million thousand (Bob, 1000000, n)
+Full Name Defendent (Justin Kyle Chang, 20, y)
+No Name Defendent ("", na, na)
+Negative paid amount (Travis, -50, na)
+Neither "y" or "n" input for fake athlete (James, 30, yes)
+Space(s) entered for defendant name ("   ", 30, y) //not handled
+Character input for amount paid (Bob, A lot of money, y) //not handled

@@ -1,0 +1,9 @@
+In the program, original.cpp, I inputed 0 for the people surveyed, 0 for the people who supported impeachment, and 0 for the ones who did not support 
+impeachment. The code outputs that "More people oppose impeachment than support it" which is incorrect because nobody submitted a reponse for the survey.
+To begin, I created a logic error by switching the comparison operator in line 30 of the code. I changed the comparison for the "forImpeachment" and "antiImpeachment" variables
+from greater than to less than. Doing this resulted in the code producing an incorrect final statement. To specify, when there are more people who support impeachment, 
+the output of the program will be that more people oppose it (vice-versa). The two logical errors I introduced into this program were from removing a semicolon after the 
+declaration of "numberSurveyed" and the quotation marks from the string of text following cout. The compiler states that a semicolon should precede int meaning that there
+should be an identification where that line of code ends. On the other hand, the absence of quotations on a cout command tells the compiler to print out each invidual word 
+as a variable instead of the desired text. As a result, a message is generated saying "'How': Undeclared identifier". This tells us that 'How' is not an initialized variable
+thus resulting in an error.
