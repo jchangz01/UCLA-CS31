@@ -1,0 +1,208 @@
+1.
+	a)
+	int main()
+	{
+		int arr[3] = { 5, 10, 15 };
+		int* ptr = arr;
+
+		*ptr = 30;          // set arr[0] to 30
+		*(ptr + 1) = 20;      // set arr[1] to 20
+		ptr += 2;
+		*ptr = 10;        // set arr[2] to 10
+
+		for (ptr = arr; ptr < 3 + arr; ptr++)
+		{
+			cout << *ptr << endl;    // print values
+		}
+	}
+
+	b) The function is not performing properly because we are passing a pointer
+	by value rather than reference. As a result, the pointer in the main function
+	is not being assigned to a value thus causing an error. We can fix this by passing
+	the parameter ptr by reference.
+
+	void findMax(int arr[], int n, int*& pToMax)
+    	{
+	       	if (n <= 0) 
+   	         	return;      // no items, no maximum!
+    
+		pToMax = arr;
+
+	        for (int i = 1; i < n; i++)
+        	{
+			if (arr[i] > *pToMax)
+                 		pToMax = arr + i;
+        	}
+    	}       
+
+	int main()
+   	{
+        	int nums[4] = { 5, 3, 15, 6 };
+		int* ptr;
+
+	        findMax(nums, 4, ptr);
+        	cout << "The maximum is at address " << ptr << endl;
+		cout << "It's at position " << ptr - nums << endl;
+        	cout << "Its value is " << *ptr << endl;
+	}
+
+	c) The issue in the main function is that we are passing a pointer
+	by value to a pointer parameter. In doing so, we are not obtaining 
+	a value for ptr in the main function. To fix this, we will declare ptr
+	as an integer and pass it as a reference to the computeCube function, 
+	so int ncubed will be pass a value back to ptr.
+
+	void computeCube(int n, int* ncubed)
+	{
+		*ncubed = n * n * n;
+	}
+
+	int main()
+	{
+		int ptr;
+		computeCube(5, &ptr);
+		cout << "Five cubed is " << ptr << endl;
+	}	
+
+	d) Because both parameters of strequal are cstrings, we are to compare
+	each character of the strings to find if they are equal. However, in this example,
+	we are implementing a while of when addresses str1 and str2 do not equal a zero byte when
+	instead, we should be evaluating the values that str1 and str2 point to. To fix this,
+	we will use the pointer values of str1 and str2 in the while loop, if statement, and return statement.
+	
+	bool strequal(const char str1[], const char str2[])
+	{
+		while (*str1 != 0 && *str2 != 0)
+		{
+			if (*str1 != *str2)  // compare corresponding characters
+				return false;
+			str1++;            // advance to the next character
+			str2++;
+		}
+		return *str1 == *str2;   // both ended at same time?
+	}
+
+	int main()	
+	{
+		char a[15] = "Cheng";
+		char b[15] = "Cheng";
+
+		if (strequal(a, b))
+			cout << "They're the same person!\n";
+	}
+
+	e) Because the function, getPtrToArray returns a pointer for int anArray
+	to the main function, ptr will point to the pointer that points to anArray, but since
+	anArray is part of different function (outside of main) and is not returned itself, 
+	*ptr becomes undefined. 
+
+2. 
+a) double* cat;
+b) double mouse[4];
+c) cat = mouse + 4;
+d) *cat = 25;
+e) *(mouse + 3) = 54;
+f) cat -= 3;
+g) cat[1] = 27;
+h) cat[0] = 42;
+i) bool b = (*cat == *(cat + 1));
+j) bool d = (cat == &mouse[0]);
+
+3.
+	a)
+	double mean(const double* scores, int numScores)
+	{
+		double tot = 0;
+		for (int i = 0; i < numScores; i++)
+		{
+			tot += *(scores + i);
+		}
+		return tot / numScores;
+	}
+	
+	b)
+	const char* findTheChar1(const char* str, char chr)
+	{
+		for (int k = 0; *(str + k) != 0; k++)
+			if (*(str + k) == chr)
+				return (str + k);
+
+		return nullptr;
+	}
+	
+	c)
+	const char* findTheChar2(const char* str, char chr)
+	{
+		while (*str != '\0')
+		{
+			if (*str == chr)
+				return str;
+			else
+				str++;
+		}
+
+	return nullptr;	
+	}	
+
+4.
+Output
+3
+4
+79
+-1
+9
+22
+19
+
+The main function starts by initializing the pointer ptr by calling the function
+	int* maxwell (int* a, int* b);
+
+The function will compare the array values at position 0 (int* a) and 2 (int* b) and
+return the pointer to the greater value. In this case, a will be returned because 
+array[0] = 5 > array[2] = 4. As a result, *ptr will point to array[6].
+
+The next few commands will rearrange and alter the elements in array, 
+	*ptr = -1 will set array[0] = -1
+	ptr += 2 will increment the position of ptr by 2
+	ptr[1] = 9 will set array[3] = 9 because ptr is already at position 2
+	*(array + 1) sets the first element of array to 79. 
+
+After these rearrangements, array[6] = { -1, 79, 4, 9, 22, 19 };
+
+The next line will write 3,
+	cout << &array[5] - ptr << endl;
+
+With ptr's address at 2, this will print out 3 because the '&' deferences array 
+leaving the addresses 5-2 = 3.
+
+Two more functions are called,
+	void swap1(int* a, int* b);
+	void swap2(int* a, int* b);
+
+In swap1, addresses zero and one from array are passed and exchanged. 
+Because the arguments are passed by value, exchanging the addresses will not
+alter the elements in array[6]. On the other hand, swap2 swaps the values being 
+pointed to by array[0] and array[2] thus switching the values 4 and -1.
+The array values are as shown {4, -1, 79, 9, 22, 19}. 
+
+Finally, 	
+	for (int i = 0; i < 6; i++)
+		cout << array[i] << endl;
+
+This will print out each value in array line by line.
+
+5.
+void removeS(char* line)
+{
+	char* l = line;
+	while (*l != 0)
+	{
+		if (*l != 's' && *l != 'S')
+		{
+			*line = *l;
+			line++;
+		}
+		l++;
+	}
+	*line = '\0';
+}

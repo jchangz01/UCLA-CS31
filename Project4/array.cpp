@@ -39,7 +39,7 @@ int main()
 	assert(flip(f, 3) == 3 && f[0] == "mike" && f[2] == "lindsey");
 
 	assert(separate(h, 7, "lindsey") == 3);
-
+	
 	cout << "All tests succeeded" << endl;
 }
 
@@ -134,15 +134,15 @@ int countRuns(const string a[], int n)
 }
 int flip(string a[], int n)
 {
-	if (n < 0) //returns -1 if n is a negative number
+	if (n < 0)
 		return -1;
 
 	string copy;
 	for (int e = 0; e != n / 2; e++)
 	{
-		copy = a[n - 1 - e]; //stores a copy of the outer element
-		a[n - 1 - e] = a[e];
-		a[e] = copy;
+		copy = a[e]; //stores a copy of the outer element
+		a[e] = a[n - 1 - e];
+		a[n - 1 - e] = copy;
 	}
 	return n;
 }

@@ -1,0 +1,78 @@
+a. My biggest obstacle was trying to comprehend the principles of the Flowers
+and Bees word guessing game. I spent over 40 minutes reading the project specs trying 
+to figure out how to start my program. I was very confused by the extra mywordfile.txt
+file we had to incorporate. Later, I realized that this file was an archive of 
+random words that would be used in the game. Besides this, the coding procedure
+wasn't too hard. Trying to calculate the bees and flowers when characters overlapped
+presented a minor challenge, but it wasn't too bad.
+
+b. 
+//main
+. . . 
+ask user for rounds they want to play
+repeatedly for r number of rounds:
+	generate random number
+	write length of mystery word
+	call function playOneRound to return number of tries
+	write number of tries/try
+	add tries to average 
+	divide average by r 
+	if tries is greater than maximum
+		set max equal to tries
+	if tries is less than mininum
+		set min equal to tries
+	write average, minimum, maximum
+
+//playOneRound
+. . . 
+get mystery word
+repeatedly:
+	get user input for trial word
+	if trial word is not lower case or within word size
+		write notice message
+	if trial word does not match word from the text file
+		write notice message
+	if trial word is equal to mystery word
+		incremenet number of tries by one 
+		return number of tries
+	call function flowers to calculate number of flowers
+	write number of flowers
+	call function bees to calculates number of bees
+	write number of bees
+	increment number of tries
+
+//flowers
+. . . 
+repeatedly until a zero byte is read:
+	if mystery word and trial word are equal at position l
+		add a flower
+return number of flowers
+
+//bees
+. . .
+repeatedly until a zero byte is read in mystery word:
+	repeatedly until a zero byte is read in trial word:
+		if mystery word and trial word have the same character at different positions
+			add a bee
+return number of bees
+
+//lowerCase
+repeatedly until a zero byte is read:
+	if character is lower case
+		increment lowerCheck by one  
+	else 
+		return false
+return true
+
+//wordLength
+if length of word is less than 4 or greater than 6
+	return false
+else
+	return true
+
+//match
+repeatedly until every mystery word in the word file is evaluated
+	if trial word is equivalent to mystery word
+		return true
+return false
+
